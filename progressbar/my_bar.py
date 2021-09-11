@@ -71,7 +71,7 @@ if __name__ == '__main__':
     # When we run the main entrance here, it generally means we created a running program -> process
     # In a process, we can use threading to create running threads.
     task_1 = Thread(target=run_bar)  # method/function as parameter
-    #task_2 = Thread(target=run_bar)
+    # task_2 = Thread(target=run_bar)
     task_1.start()
     time.sleep(3)
-    #task_2.start()
+    # task_2.start()
