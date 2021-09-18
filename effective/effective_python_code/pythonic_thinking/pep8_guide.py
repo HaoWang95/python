@@ -15,7 +15,7 @@ Whitespace conventions
 In Python, whitespace is syntactically significant. Python programmers are especially sensitive to the effects of
 whitespace on code clarity. Follow the guidelines related to whitespace.
 The PyCharm will prompt us immediately if we break the PEP-8 guideline.
-1. Use spaces instead of tabs for indentation.
+1. Use spaces instead of tabs for indentation.(Depends on the text editor)
 2. Use 4 spaces for each level of syntactically significant indenting.
 3. Lines should be 79 characters in length or less. (Note that there's a vertical line in PyCharm editor!)
 4. Continuations of long expressions onto additional lines should be indented by four extra spaces from their normal
@@ -30,14 +30,39 @@ before the type information.
 
 Naming conventions
 1. Functions, variables, and attributes should be in lowercase_underscore format.
-2. Protected instance attributes should be in _leading_underscore format.
+2. Protected instance attributes should be in _leading_underscore format. (used in OOP class, public private protected)
 3. Private instance attributes should be in __double_leading_underscore format.
-4. Classes (including exceptions) should be in CapitalizedWord format.
+4. Classes (including exceptions) should be in CapitalizedWord format. Not in Cap_Word format
 5. Module-level constants should be in ALL_CAPS format.
 6. Instance methods in classes should use self, which refers to the object, as the name of the first parameter.
-7. Class methods should use cls, which refers to the class, as the name of the first parameter.
+7. Class methods should use cls, which refers to the class, as the name of the first parameter.(We'll cover this later)
+(static method and class method)
 """
+
+# Define a constant
+
+MATH_PI = 3.1415926
+
 # There are many guidelines in PEP8
 
-if __name__ == '__main':
+
+class Person:
+    def __init__(self):
+        # The self here represents
+        self._profession = ""  # protected
+        self.__secret_list = []  # private
+        self.name = "Init name"  # public
+
+
+class Pet:
+    def __init__(self):
+        self._breed = ""
+
+
+if __name__ == '__main__':
     print("I'm not sure whether this is following pep8")
+    print("This is supposed to be an indentation, and to perform a properly managed indentation level, what is required"
+          "")
+    my_dictionary: dict = {"key": "value"}
+    a = 5
+    albert_homework = ""
