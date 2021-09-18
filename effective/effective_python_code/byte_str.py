@@ -1,4 +1,5 @@
 """
+class 2
 In python, there are two types that represent sequences of character data: bytes and str.
 Bytes contains raw, unsigned 8-bit values, often in the ASCII encoding.
 The bytes have a prefix of b'{content}', the letter b here represents bytes.
