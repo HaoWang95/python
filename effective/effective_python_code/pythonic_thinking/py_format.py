@@ -77,7 +77,7 @@ def conclusion():
     f_string: str = f'{key:<10} = {value:<10.3f}'
     c_style_tuple: str = '%-10s = %-10.3f' % (key, value)
     c_style_dict: str = '%(key)-10s = %(value).2f' % {'key': key, 'value': value}
-    str_format: str = '{:<10} = {:.2f}'.format(key, value)
+    str_format: str = '{:<10} = {:.2f}'.format(key, value)  # {}
     str_kw_format: str = '{key:<10} = {value:.2f}'.format(key=key, value=value)  # keyword approach
     print(f_string)
     print(c_style_tuple)
