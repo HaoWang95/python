@@ -1,3 +1,5 @@
+from typing import List  # represents list
+
 """
 From the zip documentation by using help(zip), we can read that zip takes a '*iterables' as parameter. Which means zip is
 a built-in function to deal with multiple iterables.
@@ -5,6 +7,8 @@ zip can process iterators in parallel.
 zip has a limitation: the ideal scenario of using zip is the two lists share the same length, if the length is
 different, then it will hold to the short one. zip will keep yielding tuples until any one of the wrapped iterators is
 exhausted.
+
+Python typing: the typing module is used for type suggestions.
 """
 
 
@@ -44,6 +48,42 @@ def test_zip():
         print(f'zip1: {zip1_item}, zip2: {zip2_item}')
 
 
+def zip_review():
+    names: List[str] = ['Joe', 'Jessie', 'Peter', 'John', 'Johnny', 'Tom', 'Johnathon']
+    # list comprehension: use names to calculate the length
+    names_length: List[int] = [len(name) for name in names]
+
+    # Now we need to find the longest name and the corresponding length
+    longest_name: str = None
+    max_len: int = 0
+    for i in range(len(names)):  # can be replaced with enumerate
+        current_len: int = names_length[i]  # current temp length can be referenced via names_length
+        if current_len > max_len:
+            longest_name = names[i]
+            max_len = current_len
+    print(longest_name, max_len)
+
+    # however, the code above is quite visual noisy. we can reduce the range(len(...)) to a enumerate
+    longest_name_2: str = None
+    max_len_2: int = 0
+    for index, name_item in enumerate(names):
+        temp_len: int = names_length[index]
+        if temp_len > max_len_2:
+            max_len_2 = temp_len  # if the current length is even longer, then the max length will be the current length
+            longest_name_2 = name_item
+    print(longest_name_2, max_len_2)
+
+    # the code above can be iterated at the same time
+    longest_name_3: str = None
+    max_len_3: int = 0
+    for name, name_len in zip(names, names_length):
+        if name_len > max_len_3:
+            max_len_3 = name_len
+            longest_name_3 = name
+    print(longest_name_3, max_len_3)
+
+
 if __name__ == '__main__':
     # get_help_zip()
-    test_zip()
+    # test_zip()
+    zip_review()
