@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 from datetime import datetime
 import json
 
@@ -57,6 +57,22 @@ def decode(data, default=None):
         if default is None:
             default = {}
         return default
+
+
+def log_typed(
+        message: str,
+        when: Optional[datetime] = None
+) -> None:
+    """
+    A typed log method
+    :param message: the log message
+    :param when: the log time
+    :return: None
+    """
+    if when is None:
+        when = datetime.now()
+    print(f'{when}: {message}')
+
 
 if __name__ == '__main__':
     log("This is a testing message")
