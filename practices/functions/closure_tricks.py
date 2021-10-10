@@ -1,4 +1,5 @@
 from typing import List
+from datetime import datetime
 
 
 def sort_priority(values: List, group):
@@ -34,3 +35,14 @@ class Sorter:
             self.found = True
             return 0, x
         return 1, x
+
+
+def log(message: str, when=None):
+    if when is None:
+        when = datetime.now()
+    print(f'{when}: {message}')
+
+
+if __name__ == '__main__':
+    log("This is a testing message")
+    log("This is a debug message")
