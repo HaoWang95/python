@@ -1,5 +1,6 @@
 from typing import List
 from datetime import datetime
+import json
 
 
 def sort_priority(values: List, group):
@@ -42,6 +43,20 @@ def log(message: str, when=None):
         when = datetime.now()
     print(f'{when}: {message}')
 
+
+def decode(data, default=None):
+    """
+    Load json data from a string
+    :param data: Json data to decode
+    :param default: Defaults to an empty dict
+    :return:
+    """
+    try:
+        return json.loads(data)
+    except ValueError:
+        if default is None:
+            default = {}
+        return default
 
 if __name__ == '__main__':
     log("This is a testing message")
