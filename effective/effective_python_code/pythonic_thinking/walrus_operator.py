@@ -4,6 +4,8 @@ from typing import Dict
 Walrus operator is a new syntax introduced in Python3.8 so solve a long-standing problem with the language that can 
 cause code duplication.
 Walrus: := 
+
+Assignment expressions use the walrus operator := to both assign and evaluate variable names in a single expression.
 """
 
 
