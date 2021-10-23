@@ -64,4 +64,87 @@ print(f'what_is_this_4 ? -> {what_is_this_4}')
 The point here is the stride part of the slicing syntax can be extremely confusing because we are facing with many :::.
 Having three numbers with some :: in the brackets is hard to read because of its comprehension density. Therefore, pls 
 know that Python supports another syntax called striding. And we just need to know some basic striding like [::-1], 
-[::-2], [::2], and [1::2]. And always avoid complex striding because it is very confusing to understand
+[::-2], [::2], and [1::2]. And always avoid complex striding because it is very confusing to understand.
+
+* Section 2.3 take away note
+    * Specifying start, end and stride in one single slice can be extremely confusing
+    * Use positive values in slicing and striding when we can because negative values can be hard to understand
+    * Avoid using start, end and stride together in a single slice.(As examples above, it is complex in nature to understand)
+    
+### Section 2.4 Using Key parameter to sort
+It is easy to sort a primitive list. We can use the sort method directly, for example: my_list.sort()
+* The sort method does not work for objects unless they define a nature ordering using special methods, which is feasible
+but not common.
+* The key parameter of the sort method can be used to supply a helper function(a helper lambda function) that returns the
+value to use for sorting.
+* Also, the key parameter allow us to combine some other features, for example, we can combine lambda x: len(x.attr) to
+achieve the sorting by length.
+```python
+class WorkingTool:
+    def __init__(self, name, weight):
+        self.name = name
+        self.weight = weight
+
+    def __repr__(self):
+        return f'Tool(name: {self.name}, weight {self.weight})'
+
+
+# A more advanced example compared with WorkingTool
+class Car:
+    def __init__(self, name=None, speed=None, price=None, owner=None):
+        self.name = name  # public
+        self.speed = speed  # public
+        self.price = price  # public
+        self.__owner = owner  # private
+
+    @property
+    def owner(self):
+        return self.__owner
+
+    @owner.setter
+    def owner(self, owner):
+        self.__owner = owner
+
+    def __repr__(self):
+        return f'Car(name={self.name}, speed={self.speed}, price={self.price}, owner={self.__owner})'
+
+
+def use_workingtool() -> None:
+    my_tool_box: list[WorkingTool] = [
+        WorkingTool('Screwdriver', 0.2),
+        WorkingTool('Hammer', 4.0),
+        WorkingTool('Wrench', 1.5),
+        WorkingTool('Ladder', 4.5)
+    ]
+    # Now consider how we can sort my_tool_box
+    # Lambda: anonymous function, think it like a function call, but the function has no name
+    # Anonymous function, callback function (JavaScript)
+    print(f'Unsorted tool box: {my_tool_box}')
+    my_tool_box.sort(key=lambda variable: variable.weight)
+    print(f'Sorted tool box: {my_tool_box}')
+
+
+def use_cars():
+    owner_str: str = 'Albert'
+    albert_garage: list[Car] = [
+        Car(name='BMW', speed=180, price=150000, owner=owner_str),
+        Car(name='Fiat', speed=210, price=170000, owner=owner_str),
+        Car(name='Mustang', speed=190, price=155000, owner=owner_str)
+    ]
+    # Consider, how to solve your garage by car's speed
+    albert_garage.sort(key=lambda car_variable: car_variable.speed, reverse=True)
+    print(f'Sort garage by speed: {albert_garage}')
+    # Consider, how to sort your garage by car's speed, but from low to high
+    albert_garage.sort(key=lambda car: car.speed, reverse=False)
+    print(f'Sort garage by speed: {albert_garage}')
+    # Consider, how to sort your garage by car's price, following the default order
+    albert_garage.sort(key=lambda car: car.price)
+    print(f'Sort garage by price: {albert_garage}')
+    # Consider, how to sort your garage by car's price, but start from high to low
+    albert_garage.sort(key=lambda x: x.price, reverse=True)
+    print(f'Sort garage by price(from high to low): {albert_garage}')
+    # Sort your garage by the length of car's name
+    albert_garage.sort(key=lambda car: len(car.name), reverse=True)
+    print(f'Sort garage by name length: {albert_garage}')
+```
+    
