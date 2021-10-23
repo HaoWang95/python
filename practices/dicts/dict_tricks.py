@@ -1,6 +1,31 @@
 from typing import TypeVar
+from collections.abc import MutableMapping
 
 T = TypeVar('T')
+
+
+class SortedDict(MutableMapping):
+    def __init__(self):
+        self.data = {}
+
+    def __getitem__(self, key):
+        return self.data[key]
+
+    def __setitem__(self, key, value):
+        self.data[key] = value
+
+    def __delitem__(self, key):
+        if self.data[key]:
+            del self.data[key]
+
+    def __iter__(self):
+        keys = list(self.data.keys())
+        keys.sort()
+        for k in keys:
+            yield k
+
+    def __len__(self):
+        return len(self.data)
 
 
 class Visits(dict):
