@@ -49,6 +49,13 @@ class Visits(dict):
         return len(self._data)
 
 
+class DictHandleMissing(dict):
+    def __missing__(self, key):
+        self[key] = ''
+        print(f'No {key} is found')
+        return self[key]
+
+
 class Sorter:
     def __init__(self, group):
         self._group = group
@@ -61,5 +68,29 @@ class Sorter:
         return 1, x
 
 
+class Creature:
+    def __init__(self):
+        print('A creature is created')
+
+    def behave(self):
+        print('behave')
+
+
+class Plant(Creature):
+    def __init__(self):
+        super().__init__()
+
+
+class Animal(Creature):
+    def __init__(self):
+        super().__init__()
+
+    def behave(self):
+        print('Animal')
+
+
 if __name__ == '__main__':
-    pass
+    my_dict = DictHandleMissing()
+    print(my_dict['test'])
+    animal = Animal()
+    animal.behave()

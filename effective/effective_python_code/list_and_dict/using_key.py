@@ -94,6 +94,47 @@ def use_cars():
     print(f'Sort garage by name length: {albert_garage}')
 
 
+class Student:
+    """Implementation of the student class, the Student class should have the following property values
+    1. name
+    2. age
+    3. score
+    """
+
+    def __init__(self, name: str = None, age: int = None, score: int = None):
+        self.name = name
+        self.age = age
+        self.score = score
+
+
+def sort_student_by_score():
+    """Create a student list, then sort the student by the score"""
+    students: list[Student] = [
+        Student('Peter', 15, 88),
+        Student('Allan', 15, 70),
+        Student('Alex', 14, 68),
+        Student('Nancy', 15, 75),
+        Student('Mia', 17, 77),
+        Student('Michael', 14, 55)
+    ]
+    students.sort(key=lambda x: x.score)
+    print(students)
+    stu = Student('Student1', 16, 80)
+
+
+def sort_student_by_namelength():
+    """Sort the student by the length of name"""
+    students: list[Student] = [
+        Student('Peter', 15, 88),
+        Student('Allan', 15, 70),
+        Student('Alex', 14, 68),
+        Student('Nancy', 15, 75),
+        Student('Mia', 17, 77),
+        Student('Michael', 14, 55)
+    ]
+    students.sort(key=lambda x: len(x.name))
+
+
 if __name__ == '__main__':
     use_sort()
     use_workingtool()

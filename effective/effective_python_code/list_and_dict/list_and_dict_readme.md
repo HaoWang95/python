@@ -147,4 +147,11 @@ def use_cars():
     albert_garage.sort(key=lambda car: len(car.name), reverse=True)
     print(f'Sort garage by name length: {albert_garage}')
 ```
-    
+### Section 2.5 Python lambda
+lambda is a common programming feature in many programming languages(Java, C#, C++). Lambda functions can work as an 
+extension. Its core concept in Python is a lambda is still a function, but it is a anonymous function.
+> Please note the general format of a lambda function: 
+  * **lambda *args: the returned data**
+```python
+   
+```
