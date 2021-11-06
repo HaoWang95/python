@@ -152,6 +152,23 @@ lambda is a common programming feature in many programming languages(Java, C#, C
 extension. Its core concept in Python is a lambda is still a function, but it is a anonymous function.
 > Please note the general format of a lambda function: 
   * **lambda *args: the returned data**
+ 
+### Section 2.6 Use dict to check keys
+1. Use **try, except KeyError**.
+2. Use **if key in dict.keys()**.
+3. Use **dict.get(key)**.
+4. Use the **setdefault(key, value)** method
+> Being able to apply these three techniques above in dict usage.
 ```python
-   
+from typing import Dict
+
+def update_score(player_name: str, player_dashboard: Dict[str, int]):
+    if player_dashboard.get(player_name) is not None:
+        player_dashboard[player_name] += 1
+    else:
+        player_dashboard[player_name] = 0
 ```
+
+### Section 2.7 A better approach to handle missing items in dict
+* Use **defaultdict** to handle missing items.
+> Also, it is important to know how to use **setdefault** as well.

@@ -17,6 +17,7 @@ class Student:
         return f'Student(student_name={self.student_name}, student_age={self.student_age}, s' \
                f'tudent_score={self.student_score}) '
 
+
 # class method
 # static method
 class Person:
