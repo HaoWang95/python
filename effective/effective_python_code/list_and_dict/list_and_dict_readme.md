@@ -170,5 +170,70 @@ def update_score(player_name: str, player_dashboard: Dict[str, int]):
 ```
 
 ### Section 2.7 A better approach to handle missing items in dict
-* Use **defaultdict** to handle missing items.
-> Also, it is important to know how to use **setdefault** as well.
+* Use **setdefault** to handle missing items.
+>   The dict type provides the setdefault method to help shorten the pattern of checking keys. setdefault tries to fetch
+    the value of a key in the dictionary. If the key isn't present, the (setdefault) method assigns that key to the
+    default value. And then return the value for that key.
+    For example: for the student dictionary below, if we call student.setdeault("Alice", 10), it will just return the
+    original value of student["Alice"].
+    However, when we call student.setdefault("Ben", 15), now it will just create a new item entry in student dict, because
+    student["Ben"] does not exist in the dict. Also, it will just set student["Ben"] to be 15 and return the default value
+    of Ben, which is student["Ben"] = 15.
+```python
+student: dict[str, int] = {
+    "Alice": 15,
+}
+# because alice is a valid key in student dict, therefore, setdefault("Alice",16) will just return the valid value.
+# it will not change Alice: 15 to Alice: 16.
+print(student.setdefault("Alice", 16))
+if peter_age := student.get("Peter") is not None:
+    print(peter_age)
+else:
+    print("Peter is not even in the student dict")
+student.setdefault("Peter", 17)  # it worked!
+if check_age := student.get("Peter"):
+    print("After the initialization, Peter's age is ", check_age)
+else:
+    print("Peter is not even in the student dict")
+```
+### Section 2.8 Prefer using defaultdict OVER setdefault to handle missing items in internal state
+When using dictionary/dict that we didn't create(we are using dict created in some libs), there are many ways to handle
+missing keys(Based on **section 2.6** and **section 2.7**, we already got 4 approaches.) In some conditions, using get
+method can be a good approach than using in expressions and KeyError exceptions, for some use cases we can prefer using
+**setdefault** because it appears to be a very concise solution to handle missing keys.
+* Another solution is to use **defaultdict**.
+**defaultdict** class from the collections module can store a default value automatically when a key does not exist.
+All we need to do is to provide a defualt value to use each time when the key is mssing.
+```python
+# Use the code snippet below as a quick reference to setdefault and default dict
+# Now we use setdefault to construct our own data structure called visits
+
+from collections import defaultdict
+
+class VisitedCountry:
+    def __init__(self):
+        self.__visited: Dict[str, Set[str]] = {}
+
+    def add(self, country, city):
+        if country is not None and city is not None:
+            self.__visited.setdefault(country, set()).add(city)
+        else:
+            raise Exception()
+
+    def __repr__(self):
+        return repr(self.__visited)
+
+
+# How to convert the example above, to use defaultdict instead of setdefault ?
+class DefaultVisitedCountry:
+    def __init__(self):
+        self.__visited = defaultdict(set)
+
+    def add(self, country: str, city: str) -> None:
+        if country is None or city is None:
+            raise Exception()
+        self.__visited[country].add(city)
+
+    def __repr__(self):
+        return repr(self.__visited)
+```

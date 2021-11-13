@@ -19,7 +19,8 @@ def test_key_in_dict(key: str) -> bool:
     try:
         if players[key] is not None:
             return True
-    except KeyError:
+    except KeyError as error:
+        print(error)
         return False
 
 
@@ -35,6 +36,7 @@ def test_key_in_dict2(key: str = None) -> bool:
     # based on our testing, players.keys() returns a dict_keys object, which is an Iterable
     if key is not None:
         if key in players.keys():
+            #  player[key]
             return True
     return False
 
@@ -60,6 +62,35 @@ def update_score(player: str, dashboard: Dict[str, int]):
         dashboard[player] = 0
 
 
+def get_key_with_setdefault():
+    """
+    The dict type provides the setdefault method to help shorten the pattern of checking keys. setdefault tries to fetch
+    the value of a key in the dictionary. If the key isn't present, the (setdefault) method assigns that key to the
+    default value. And then return the value for that key.
+    For example: for the student dictionary below, if we call student.setdeault("Alice", 10), it will just return the
+    original value of student["Alice"].
+    However, when we call student.setdefault("Ben", 15), now it will just create a new item entry in student dict, because
+    student["Ben"] does not exist in the dict. Also, it will just set student["Ben"] to be 15 and return the default value
+    of Ben, which is student["Ben"] = 15.
+    :return: None
+    """
+    student: Dict[str, int] = {
+        "Alice": 15,
+    }
+    # because alice is a valid key in student dict, therefore, setdefault("Alice",16) will just return the valid value.
+    # it will not change Alice: 15 to Alice: 16.
+    print(student.setdefault("Alice", 16))
+    if peter_age := student.get("Peter") is not None:
+        print(peter_age)
+    else:
+        print("Peter is not even in the student dict")
+    student.setdefault("Peter", 17)  # it worked!
+    if check_age := student.get("Peter"):
+        print("After the initialization, Peter's age is ", check_age)
+    else:
+        print("Peter is not even in the student dict")
+
+
 if __name__ == '__main__':
     player_name: str = 'Albert'
     print(f'{test_key_in_dict.__name__} -> {player_name}: {test_key_in_dict(player_name)}')
@@ -78,3 +109,4 @@ if __name__ == '__main__':
     print(player_dashboard)
     update_score('Peter', player_dashboard)
     print(player_dashboard)
+    get_key_with_setdefault()
