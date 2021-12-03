@@ -18,7 +18,7 @@ def log(message, when=None):
 def log_typed(message: str, when: Optional[datetime] = None) -> None:
     """
 
-    :param message: 
+    :param message:
     :param when:
     :return:
     """
