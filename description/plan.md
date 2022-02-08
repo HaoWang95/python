@@ -41,11 +41,12 @@ __something__(),
         * GoLang(static) -> Clear syntax, support concurrency by nature, and it's dominating in Cloud native architectures.(
         Because GoLang is used to build cloud native infrastructures like **Kubernetes** and its corresponding ecosystem
         )
-        * C++(static) -> High-computing, OS, embedded system, game dev etc.
+        * C/C++(static) -> High-computing, OS, embedded system, game dev, database etc.(Library, packages) Memory control
         * JavaScript(dynamic) -> Front end web development, web scripting. Most used programming language.(Node.js for backend)
         * Python(dynamic) -> AI, Data Analysis, machine learning/deep learning. (What these require are Mathematics)
             * Python can also be used in Web Dev(Backend, or Full stack).
             * Dynamic, python scripting tools to automate tasks.(Process excel, process logs, testing)
+         * Rust -> Replace C++. Rust is gaining quite popular in the past 2 years. 
 * Machine Learning
 * Deep Learning & AI
 * Web dev -> Flask(A well-designed micro framework). Django(A fullstack web framework)
