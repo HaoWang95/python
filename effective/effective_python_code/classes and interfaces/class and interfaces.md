@@ -93,6 +93,13 @@ The core concept is really simple.
 * Use @classmethod to define alternative constructors for your class.
 
 ## Know how to use @staticmethod
-What is a static method in Python. A method that can be used without creating an instance of the class.
 
-@sth.getter @sth.setter @classmethod @staticmethod
+## How to use super to initialize parent class(Inheritance)
+
+## Consider composing functionality with Mixin class(Mixin Type)
+
+## Prefer public attributes over private ones (__)
+
+## Inherit from collections.abc for Custom Container Types
+When we want to create our own data container(data structure), like an enhanced list(linked list), binary tree, or other
+data structures, consider inherit from collections.abc.
