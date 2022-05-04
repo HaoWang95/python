@@ -95,6 +95,10 @@ The core concept is really simple.
 ## Know how to use @staticmethod
 
 ## How to use super to initialize parent class(Inheritance)
+Inheritance is an important OOP(Object-oriented programming) concept. 
+Python support multiple inheritance.
+Even though Python supports multiple inheritance, it is suggested to keep the inheritance structure clear.
+Another very important concept in OOP is class composition. 
 
 ## Consider composing functionality with Mixin class(Mixin Type)
 
@@ -103,3 +107,12 @@ The core concept is really simple.
 ## Inherit from collections.abc for Custom Container Types
 When we want to create our own data container(data structure), like an enhanced list(linked list), binary tree, or other
 data structures, consider inherit from collections.abc.
+* Inherit directly from Python's container types, eg, list or dict for our simple use cases.
+* We need to inherit from collections.abc to ensure that our classes match the required interfaces and behaviors.
+
+## Use Plain attributes instead of setter and getter methods
+To avoid habits gained from other programming languages. -> @Property and @property_name.settter. These two decorators
+boosts our efficiency to get and change the property value.
+
+
+## __get__ __set__, __dict__, 
